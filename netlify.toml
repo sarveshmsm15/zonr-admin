@@ -1,0 +1,144 @@
+headersOrigin = "config"
+redirectsOrigin = "config"
+plugins = []
+functionsDirectory = "/Users/Sarvesh/Desktop/parkspace/netlify/functions"
+functionsDirectoryOrigin = "config"
+
+[functions]
+
+  [functions."*"]
+  included_files = [
+    "*.js",
+    "admin.html",
+    "admin.css",
+    "node_modules/**",
+    "!data/**",
+    "!index.js",
+    "!**/.env*",
+    "!**/*.env",
+    "!**/test/**",
+    "!**/tests/**",
+    "!scripts/**",
+    "!backups/**",
+    "!**/*.log",
+    "!.netlify/**"
+  ]
+  external_node_modules = [
+    "sharp",
+    "mongodb",
+    "serverless-http",
+    "jose",
+    "nodemailer"
+  ]
+  node_bundler = "esbuild"
+
+[build]
+publish = "/Users/Sarvesh/Desktop/parkspace/netlify/public"
+publishOrigin = "config"
+base = "/Users/Sarvesh/Desktop/parkspace/parkspace-backend"
+command = "npm ci --omit=dev --include=optional && node scripts/netlify-native-deps.js"
+commandOrigin = "config"
+functions = "/Users/Sarvesh/Desktop/parkspace/netlify/functions"
+
+  [build.environment]
+  NODE_VERSION = "22"
+
+  [build.processing]
+
+    [build.processing.css]
+
+    [build.processing.html]
+
+    [build.processing.images]
+
+    [build.processing.js]
+
+  [build.services]
+
+[[headers]]
+for = "/*"
+
+  [headers.values]
+  X-Content-Type-Options = "nosniff"
+  Referrer-Policy = "strict-origin-when-cross-origin"
+  X-Frame-Options = "DENY"
+
+[[headers]]
+for = "/downloads/ZONR.apk"
+
+  [headers.values]
+  Content-Type = "application/vnd.android.package-archive"
+  Content-Disposition = "attachment; filename=ZONR.apk"
+  Cache-Control = "public, max-age=0, must-revalidate"
+
+[[redirects]]
+from = "/api/*"
+to = "/.netlify/functions/api/api/:splat"
+status = 200
+force = true
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/admin"
+to = "/.netlify/functions/api/admin"
+status = 200
+force = true
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/admin.js"
+to = "/.netlify/functions/api/admin.js"
+status = 200
+force = true
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/admin.css"
+to = "/.netlify/functions/api/admin.css"
+status = 200
+force = true
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/r/*"
+to = "/.netlify/functions/api/r/:splat"
+status = 200
+force = true
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/app/parking/*"
+to = "/app/parking/index.html"
+status = 200
+force = false
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]

@@ -1,0 +1,3 @@
+'use strict';const toggle=document.getElementById('nav-toggle'),navigation=document.getElementById('navigation');toggle?.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')!=='true';toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Close navigation':'Open navigation');navigation.classList.toggle('open',open);});navigation?.addEventListener('click',e=>{if(e.target.closest('a')){navigation.classList.remove('open');toggle.setAttribute('aria-expanded','false');}});
+
+for(const link of document.querySelectorAll('a[href="#more-terms"]'))link.addEventListener('click',e=>{e.preventDefault();const details=document.getElementById('more-terms');details.open=true;details.scrollIntoView({block:'nearest'});});
